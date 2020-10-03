@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:languish="clr-namespace:PlayTube.Languish;assembly=PlayTube"
+             xmlns:pullToRefresh="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
+             xmlns:abstractions="clr-namespace:Xam.Plugin.WebView.Abstractions;assembly=Xam.Plugin.WebView.Abstractions"
+             xmlns:customRenders="clr-namespace:PlayTube.CustomRenders;assembly=PlayTube"
+             x:Class="PlayTube.Pages.Default.Comment_Page"
+             Title="{languish:Translate Label_Add_comment}">
+
+    <pullToRefresh:PullToRefreshLayout x:Name="PullToRefreshLayoutView" >
+
+        <Grid x:Name="GridHieght">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="*"></RowDefinition>
+                <RowDefinition  Height="48"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <abstractions:FormsWebView x:Name="CommentWebLoader"   Margin="0,-4,0,0" IsVisible="True"  OnContentLoaded="CommentWebLoader_OnOnContentLoaded" >
+            </abstractions:FormsWebView>
+
+            <customRenders:AdMobView x:Name="AdmobBanner" IsVisible="False" BackgroundColor="White" Margin="0,-2,0,0" Grid.Row="1" Grid.Column="0"  />
+
+            <Grid  BackgroundColor="White" x:Name="OfflinePage" Grid.Row="0" Grid.Column="0" IsVisible="False" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="40*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--ICON BACKGROUND-->
+                    <Label Grid.Row="0" Text="&#xf111;" Style="{StaticResource DefaultFontColor}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="200" Opacity="0.1"/>
+
+                    <!--ICON BACKGROUND-->
+                    <Label Grid.Row="0" Text="&#xf111;" Style="{StaticResource DefaultFontColor}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="130" Opacity="0.1"/>
+
+                    <!--ICON-->
+                    <Label Grid.Row="0" Text="&#xf119;" Style="{StaticResource DefaultFontColor}" FontSize="90" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+                    <!--TEXT -->
+                    <StackLayout Grid.Row="1" VerticalOptions="Center" Padding="50,0" Spacing="2">
+                        <Label x:Name="Lbl_Offline_Mode" TranslationY="-3" HorizontalTextAlignment="Center" Text="{languish:Translate Label_Offline_Mode }" FontSize="24" FontAttributes="Bold" TextColor="#444"/>
+                        <Label x:Name="LabelOfflineError" TranslationY="3" HorizontalTextAlignment="Center" Opacity="0.8" Text="{languish:Translate Label_CheckYourInternetConnection }" FontSize="18" TextColor="#444"/>
+                    </StackLayout>
+
+                </Grid>
+
+                <!--BUTTON-->
+                <StackLayout Padding="23,0,23,3" Grid.Row="1">
+                    <Button x:Name="Btn_Try_Again" Style="{DynamicResource PrimaryActionButtonStyle}" VerticalOptions="Center" Text="{ languish:Translate Label_Try_Again }" Margin="2" Clicked="Btn_Try_Again_OnClicked"/>
+                </StackLayout>
+            </Grid>
+
+        </Grid>
+
+    </pullToRefresh:PullToRefreshLayout>
+
+</ContentPage>

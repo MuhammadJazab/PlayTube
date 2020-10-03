@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:Xam.Plugin.WebView.Abstractions;assembly=Xam.Plugin.WebView.Abstractions"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:local1="clr-namespace:PlayTube.Controls;assembly=PlayTube"
+             xmlns:abstractions1="clr-namespace:SegmentedControl.FormsPlugin.Abstractions;assembly=SegmentedControl.FormsPlugin.Abstractions"
+             xmlns:languish="clr-namespace:PlayTube.Languish;assembly=PlayTube"
+             x:Class="PlayTube.Pages.Default.Video_Player_Page">
+
+    <StackLayout x:Name="MainStackPanel" Orientation="Vertical">
+
+        <!--VideoPlayer-->
+        <Grid HeightRequest="200" MinimumHeightRequest="200" >
+            <abstractions:FormsWebView x:Name="VideoPlayer" OnContentLoaded="VideoPlayer_OnOnContentLoaded" BackgroundColor="Black" HeightRequest="250" HorizontalOptions="FillAndExpand" ></abstractions:FormsWebView>
+            <StackLayout WidthRequest="75" HeightRequest="75" HorizontalOptions="Center" VerticalOptions="Center">
+                <ActivityIndicator x:Name="Loaderspinner"  HeightRequest="60" WidthRequest="60" Color="{StaticResource AccentColor}" IsRunning="true" IsVisible="True"/>
+            </StackLayout>
+        </Grid>
+
+        <ScrollView>
+            <StackLayout Padding="5" Margin="2,0,0,0">
+                <Label x:Name="TitleLabel" Margin="5,0,0,0" FontSize="18" ></Label>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,7,0,0" HeightRequest="55" Padding="25,0,5,0">
+
+                    <StackLayout x:Name="LikeButton" HeightRequest="40" HorizontalOptions="StartAndExpand" >
+                        <Label  x:Name="IconLike" VerticalOptions="Center" HorizontalOptions="Center"  Style="{StaticResource IoniconsFontIcon}" TextColor="#8e8e8e" FontSize="22" Text="{ x:Static local1:IoniciconsFont.Thumbsup}" Margin="7,1,5,2"></Label>
+                        <Label x:Name="LikeLabel"  FontSize ="13" HorizontalOptions="Center"  Text="" Margin="7,0,7,0"  TextColor="#565656" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="LikeButton_Tabbed"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout HeightRequest="40" HorizontalOptions="StartAndExpand">
+                        <Label  x:Name="IconUnLike" VerticalOptions="Center"  HorizontalOptions="Center" Style="{StaticResource IoniconsFontIcon}" TextColor="#8e8e8e" FontSize="22" Text="{ x:Static local1:IoniciconsFont.Thumbsdown}" Margin="7,1,5,2"></Label>
+                        <Label x:Name="UnLikeLabel"  FontSize ="13" HorizontalOptions="Center" Text="" Margin="7,0,7,0"  TextColor="#565656" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="UNLikeButton_Tabbed"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout HeightRequest="40" HorizontalOptions="StartAndExpand">
+                        <Label  x:Name="IconShare" VerticalOptions="Center" HorizontalOptions="Center"  Style="{StaticResource IoniconsFontIcon}" TextColor="#8e8e8e" FontSize="22" Text="{ x:Static local1:IoniciconsFont.AndroidShare}" Margin="7,1,5,2"></Label>
+                        <Label x:Name="ShareLabel"  FontSize ="13" HorizontalOptions="Center"  Text="{languish:Translate Label_Share}" Margin="7,0,7,0"  TextColor="#565656" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ShareButton_Tabbed"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout HeightRequest="40" HorizontalOptions="StartAndExpand">
+                        <Label  x:Name="IconAddTo" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource IoniconsFontIcon}" TextColor="#8e8e8e" FontSize="20" Text="{ x:Static local1:IoniciconsFont.PlusCircled}" Margin="7,1,5,2"></Label>
+                        <Label x:Name="AddToLabel"  FontSize ="13" HorizontalOptions="Center" Text="{languish:Translate Label_Add_to}" Margin="7,0,7,0"  TextColor="#565656" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AddToButton_Tabbed"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                </StackLayout>
+
+                <BoxView x:Name="Liner" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#efefef"></BoxView>
+
+                <!--Channel Section-->
+                <StackLayout  Padding="0,10,0,10" Orientation="Horizontal">
+
+                    <StackLayout Margin="3,0,0,0" Orientation="Horizontal" WidthRequest="46" HorizontalOptions="Start" VerticalOptions="Center">
+                        <forms:CachedImage x:Name="ChannelImage" Margin="0,0,2,0"  HeightRequest="40"  WidthRequest="40" DownsampleToViewSize="true" Aspect="AspectFill"  >
+                            <forms:CachedImage.Transformations >
+                                <transformations:CircleTransformation BorderHexColor="#ffff"/>
+                            </forms:CachedImage.Transformations>
+                        </forms:CachedImage>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ChannelButton_Tabbed"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    
+                    <StackLayout Margin="0,-5,0,0" Padding="2" HorizontalOptions="StartAndExpand">
+                        <StackLayout Orientation="Horizontal">
+                            <Label x:Name="ChannelName" Text="{Binding Channel_Name}" FontSize ="13" HorizontalOptions="Fill" TextColor="#a1a1a1" />
+                            <Label  x:Name="ChannelIsverified" VerticalOptions="Center" IsVisible="False"  Style="{StaticResource IoniconsFontIcon}" TextColor="DodgerBlue" FontSize="13" Text="{ x:Static local1:IoniciconsFont.CheckmarkCircled}" Margin="1,0,5,2"></Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label x:Name="ViewsLabel"  FontSize ="12" HorizontalOptions="Fill"  TextColor="#a1a1a1"/>
+                            <Label x:Name="TimeLabel"  FontSize ="12" HorizontalOptions="Fill"  TextColor="#a1a1a1" />
+                        </StackLayout>
+                    </StackLayout>
+
+                    <Frame HorizontalOptions="End" CornerRadius="4" MinimumWidthRequest="35" x:Name="SubcribeFrame" HeightRequest="21" Padding="3" Margin="0,0,8,0" HasShadow="True" OutlineColor="#4ca5ff">
+                        <StackLayout Orientation="Horizontal" >
+                            <Label  x:Name="IconSubcribe" VerticalOptions="Center"  Style="{StaticResource IoniconsFontIcon}" TextColor="{StaticResource AccentColor}" FontSize="13" Text="{ x:Static local1:IoniciconsFont.AndroidAdd}" Margin="7,2,5,2"></Label>
+                            <Label x:Name="SubcribeLabel"  FontSize ="13" HorizontalOptions="Fill" Text="{languish:Translate Label_Subscribe}" Margin="1,8,7,0"  TextColor="{StaticResource AccentColor}" />
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SubcribeButton_Tabbed"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </StackLayout>
+
+                <BoxView x:Name="Liner2" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#efefef"></BoxView>
+
+                <!-- TOOLBAR -->
+                <Grid VerticalOptions="End" Style="{StaticResource ToolbarStyle}" HeightRequest="30" MinimumHeightRequest="30" BackgroundColor="#ffff">
+                    <abstractions1:SegmentedControl x:Name="SegControl"  ValueChanged="SegControl_OnValueChanged"  TintColor="#007AFF" SelectedSegment="0">
+                        <abstractions1:SegmentedControl.Children>
+                            <abstractions1:SegmentedControlOption Text="{languish:Translate Label_Up_next}" />
+                            <abstractions1:SegmentedControlOption Text="{languish:Translate Label_Comments}" />
+                        </abstractions1:SegmentedControl.Children>
+                    </abstractions1:SegmentedControl>
+                </Grid>
+
+                <StackLayout>
+                    <StackLayout x:Name="VideosStack">
+                        <ListView x:Name="VidoesListView" ItemsSource="ListItemsCollection"  ItemSelected="VidoesListView_OnItemSelected" HeightRequest="800" MinimumHeightRequest="800" ItemTapped="VidoesListView_OnItemTapped" 
+                                  HasUnevenRows="True" SeparatorVisibility="None"  BackgroundColor="White">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell Height="100">
+                                        <ViewCell.View>
+                                            <StackLayout Orientation="Horizontal" Margin="2,1,5,4">
+
+                                                <Grid HorizontalOptions="Start"  MinimumWidthRequest="130" WidthRequest="130" Padding="4" Margin="5,0,5,0" HeightRequest="57">
+                                                    <!--Video_Image-->
+                                                    <forms:CachedImage  HeightRequest="52" WidthRequest="75" MinimumWidthRequest="75" LoadingPlaceholder="ImagePlacholder.jpg" DownsampleToViewSize="true"  Aspect="AspectFill" HorizontalOptions="FillAndExpand" Source="{Binding dv_thumbnail}">
+                                                        <!--<forms:CachedImage.Transformations>
+                        <transformations:RoundedTransformation Radius="0"/>
+                    </forms:CachedImage.Transformations>-->
+                                                    </forms:CachedImage>
+                                                    <!--Duration-->
+
+                                                    <StackLayout BackgroundColor="#444"  Opacity="0.9" VerticalOptions="End" WidthRequest="32" TranslationY="-2" TranslationX="7" HeightRequest="16" HorizontalOptions="End" >
+                                                        <Label FontSize="11" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White" Text="{Binding dv_duration}"></Label>
+                                                    </StackLayout>
+
+                                                </Grid>
+
+                                                <StackLayout Orientation="Vertical" Margin="5" Padding="0,3,0,0">
+                                                    <!--Title-->
+                                                    <Label Text="{Binding dv_title}" FontSize="12"  HorizontalOptions="StartAndExpand" TextColor="{Binding SV_TextColor}" />
+
+                                                    <StackLayout Orientation="Horizontal" Margin="0,-3,0,0">
+                                                        <!--Channel name-->
+                                                        <Label Text="{Binding Owner_username}" LineBreakMode="WordWrap" FontSize="12" TextColor="{Binding SV_TextColor}"></Label>
+                                                        <!--isVerified-->
+                                                        <Label   VerticalOptions="Center" IsVisible="{Binding Owner_verified}"  Style="{StaticResource IoniconsFontIcon}" TextColor="DodgerBlue" FontSize="13" Text="{ x:Static local1:IoniciconsFont.CheckmarkCircled}" Margin="1,0,5,2"></Label>
+                                                    </StackLayout>
+
+                                                    <!--Category and Time-->
+                                                    <StackLayout Orientation="Horizontal" >
+                                                        <Label TextColor="{StaticResource AccentColor}" Text="{Binding dv_category_name}" FontSize="10" />
+                                                        <!--<Label TextColor="{StaticResource AccentColor}" Text="|" FontSize="10" />
+                                                        <Label Text="{Binding dv_time_ago}" TextColor="{Binding SV_TextColor}" Opacity="0.7" FontSize="10" />-->
+                                                    </StackLayout>
+                                                </StackLayout>
+
+                                            </StackLayout>
+                                        </ViewCell.View>
+                                    </ViewCell>
+
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <StackLayout x:Name="EmptyVideos" Orientation="Vertical" VerticalOptions="CenterAndExpand" IsVisible="False"  HeightRequest="600">
+
+                            <Image Source="Empty.png" HeightRequest="80" WidthRequest="80" Margin="0,20,0,20"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Aspect="Fill" ></Image>
+
+                            <!--TEXT -->
+                            <Label x:Name="Label_No_videos" TranslationY="-3" HorizontalTextAlignment="Center" Text="{languish:Translate Label_No_videos_found_for_now}" FontSize="20" FontAttributes="Bold" TextColor="#444"/>
+                            <!--<Label x:Name="Label_Go_back" TranslationY="3" HorizontalTextAlignment="Center" Opacity="0.8" Text="{languish:Translate Label_please_login_to_view_your_comment}" FontSize="15" TextColor="#444"/>-->
+
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout x:Name="CommentsStack">
+
+                        <StackLayout x:Name="CommentsPage" Orientation="Vertical" >
+                            <abstractions:FormsWebView x:Name="CommentWebLoader" HeightRequest="600"  Margin="0,-4,0,0" IsVisible="True" >
+                            </abstractions:FormsWebView>
+
+                            <!--BUTTON-->
+                            <StackLayout Padding="23,0,23,3"  VerticalOptions="End" HorizontalOptions="CenterAndExpand">
+                                <Button x:Name="Btn_AddComment" Style="{DynamicResource PrimaryActionButtonStyle}" VerticalOptions="Center" Text="{ languish:Translate Label_Add_comment }" Margin="2" Clicked="Btn_AddComment_OnClicked"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout x:Name="EmptyComments" Orientation="Vertical" VerticalOptions="CenterAndExpand" IsVisible="False"  HeightRequest="600">
+
+                            <Image Source="Empty.png" HeightRequest="80" WidthRequest="80" Margin="0,20,0,20"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Aspect="Fill" ></Image>
+
+                            <!--TEXT -->
+                            <Label x:Name="Label_Empty" TranslationY="-3" HorizontalTextAlignment="Center" Text="{languish:Translate Label_Sorry_I_can_not_access}" FontSize="20" FontAttributes="Bold" TextColor="#444"/>
+                            <Label x:Name="Label_Go_back" TranslationY="3" HorizontalTextAlignment="Center" Opacity="0.8" Text="{languish:Translate Label_please_login_to_view_your_comment}" FontSize="15" TextColor="#444"/>
+
+                        </StackLayout>
+
+                    </StackLayout>
+
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

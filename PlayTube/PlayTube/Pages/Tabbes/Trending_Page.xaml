@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             xmlns:local1="clr-namespace:PlayTube.Controls;assembly=PlayTube"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:languish="clr-namespace:PlayTube.Languish;assembly=PlayTube"
+             x:Class="PlayTube.Pages.Tabbes.Trending_Page">
+
+    <StackLayout x:Name="MainStackPanel" VerticalOptions="FillAndExpand" BackgroundColor="White" Padding="5,0,5,0" Margin="0,0,0,0">
+
+        <!--TOP HEADER LOGO BAR-->
+        <Frame x:Name="TopHeaderBAR" HeightRequest="44" Padding="3" MinimumHeightRequest="17" HasShadow="True" Margin="-5,0,-5,0">
+            <StackLayout Orientation="Horizontal" Padding="8" >
+                <Image x:Name="ImageLogo" Source="logo.png" HeightRequest="18" Margin="2,0,0,0" HorizontalOptions="StartAndExpand" Aspect="Fill" ></Image>
+                <Label x:Name="SearchIcon"  VerticalOptions="Center"  HorizontalOptions="End"  Style="{StaticResource IoniconsFontIcon}" TextColor="#444" FontSize="20" Text="{ x:Static local1:IoniciconsFont.Search}" Margin="10,0,9,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Search_OnClicked" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <shared:CircleImage x:Name="AvatarImage" HorizontalOptions="End" BorderThickness="0" Source="NoProfileImage.png" WidthRequest="35" HeightRequest="35"/>
+            </StackLayout>
+        </Frame>
+
+        <StackLayout x:Name="TitleStackLayout" VerticalOptions="Start" >
+            <Label x:Name="TopLabel" HorizontalOptions="StartAndExpand" Margin="10,9,0,10" TextColor="#444" />
+        </StackLayout>
+        <BoxView x:Name="Liner" HeightRequest="1" Margin="0,-4,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="#efefef"></BoxView>
+
+        <ListView x:Name="TrendingListView" ItemsSource="ListItemsCollection" IsPullToRefreshEnabled="True" Refreshing="TrendingListView_OnRefreshing" VerticalOptions="FillAndExpand" 
+                  ItemSelected="TrendingListView_OnItemSelected" ItemTapped="TrendingListView_OnItemTapped" ItemAppearing="TrendingListView_OnItemAppearing" 
+                  HasUnevenRows="True" SeparatorVisibility="None"  BackgroundColor="White">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Height="100">
+                        <ViewCell.View>
+                            <StackLayout Margin="-5" HeightRequest="100" Padding="5" Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+
+                                <Grid HorizontalOptions="Start"  MinimumWidthRequest="110" WidthRequest="110" Padding="6" Margin="5,0,6,0" HeightRequest="57">
+                                    <!--Video_Image-->
+                                    <forms:CachedImage  HeightRequest="52" WidthRequest="65" MinimumWidthRequest="65" LoadingPlaceholder="ImagePlacholder.jpg" DownsampleToViewSize="true"  Aspect="AspectFill" HorizontalOptions="FillAndExpand" Source="{Binding dv_thumbnail}">
+                                    </forms:CachedImage>
+                                   
+                                    <!--Duration-->
+                                    <StackLayout BackgroundColor="#444"  Opacity="0.9" VerticalOptions="End" WidthRequest="32" TranslationY="-2" TranslationX="13" HeightRequest="16" HorizontalOptions="End" >
+                                        <Label FontSize="11" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White" Text="{Binding dv_duration}"></Label>
+                                    </StackLayout>
+
+                                </Grid>
+
+                                <StackLayout HorizontalOptions="StartAndExpand" Padding="2" TranslationX="9" Margin="3,2,1,0">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+
+                                        <!--Video_Title-->
+                                        <Label x:Name="Video_Title"  Text="{Binding dv_title}" FontSize="15"  HorizontalOptions="FillAndExpand" TextColor="#444"/>
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal" Margin="0,-3,0,0">
+                                        <!--Channel_Name-->
+                                        <Label x:Name="Channel_Name" Text="{Binding Owner_username}" FontSize ="13" HorizontalOptions="Fill" TextColor="#a1a1a1" />
+                                        <!--isVerified-->
+                                        <Label   VerticalOptions="Center" IsVisible="{Binding Owner_verified}"  Style="{StaticResource IoniconsFontIcon}" TextColor="DodgerBlue" FontSize="13" Text="{ x:Static local1:IoniciconsFont.CheckmarkCircled}" Margin="1,0,5,2"></Label>
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal" Margin="0,-1,0,0">
+                                        <!--Views-->
+                                        <Label x:Name="Views" Text="{Binding dv_views}" FontSize ="13"  HorizontalOptions="Fill" TextColor="#a1a1a1"/>
+                                        <!--Time-->
+                                        <!--
+                    <Label x:Name="Time" Text="{Binding dv_time_ago}" FontSize ="12" Margin="0,2,0,0" HorizontalOptions="Fill" TextColor="#a1a1a1" />-->
+
+
+                                    </StackLayout>
+
+                                </StackLayout>
+
+                                <StackLayout HorizontalOptions="End" MinimumWidthRequest="20" TranslationX="-2">
+                                    <Label  FontSize="25" Text="{ x:Static local1:IoniciconsFont.AndroidMoreVertical}" Style="{StaticResource IoniconsFontIcon}" TextColor="#888" WidthRequest="20" TranslationY="2" TranslationX="7" HorizontalOptions="End" VerticalTextAlignment="Start">
+                                    </Label>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+
+                            </StackLayout>
+
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!--EmptyPage-->
+        <StackLayout  x:Name="EmptyPage"  VerticalOptions="CenterAndExpand" Margin="0,-6,0,0"  IsVisible="False" Orientation="Vertical"   >
+            <Grid  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="40*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--ICON BACKGROUND-->
+                    <Label Grid.Row="0" Text="&#xf111;" Style="{StaticResource DefaultFontColor}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="200" Opacity="0.1"/>
+
+                    <!--ICON BACKGROUND-->
+                    <Label Grid.Row="0" Text="&#xf111;" Style="{StaticResource DefaultFontColor}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="130" Opacity="0.1"/>
+
+                    <!--ICON-->
+                    <Label x:Name="Icon_page" Grid.Row="0" Text="&#xf03d;" Style="{StaticResource DefaultFontColor}" FontSize="60" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+                    <!--TEXT -->
+                    <StackLayout Grid.Row="1" VerticalOptions="Center" Padding="50,0" Spacing="2">
+
+                        <Label x:Name="Lbl_Dont_have" Text="{languish:Translate Label_Empty_Videos}" TranslationY="-3" HorizontalTextAlignment="Center"  FontSize="24" FontAttributes="Bold" TextColor="#444"/>
+
+                        <Label x:Name="Lbl_no_Videos" Text="{languish:Translate Label_no_Videos_to_view}" TranslationY="3"  HorizontalTextAlignment="Center" Opacity="0.8" FontSize="18" TextColor="#444"/>
+
+                    </StackLayout>
+
+                </Grid>
+
+                <!--BUTTON again-->
+                <StackLayout Padding="23,0,23,3" Grid.Row="1">
+                    <Button x:Name="tryagainButton" Style="{DynamicResource PrimaryActionButtonStyle}" VerticalOptions="End" Text="{languish:Translate Label_Try_again_now }" Margin="2" Clicked="TryagainButton_OnClicked" />
+                </StackLayout>
+
+            </Grid>
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>

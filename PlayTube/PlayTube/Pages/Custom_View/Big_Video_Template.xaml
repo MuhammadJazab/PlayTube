@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:local1="clr-namespace:PlayTube.Controls;assembly=PlayTube"
+             x:Class="PlayTube.Pages.Custom_View.Big_Video_Template">
+
+    <StackLayout BackgroundColor="White" Margin="-4" Padding="5">
+
+        <Grid>
+            <!--Video_Image-->
+            <forms:CachedImage  HeightRequest="170" DownsampleToViewSize="true" LoadingPlaceholder="ImagePlacholder.jpg"  Margin="3" Aspect="AspectFill" HorizontalOptions="FillAndExpand" Source = "{Binding dv_thumbnail}">
+                <forms:CachedImage.Transformations>
+                    <transformations:RoundedTransformation Radius="5"/>
+                </forms:CachedImage.Transformations>
+            </forms:CachedImage>
+
+            <!--Duration-->
+            <StackLayout BackgroundColor="#444" Grid.Row="0" Opacity="0.9" VerticalOptions="End" WidthRequest="32" Margin="-50,-40,7,10" HeightRequest="16" HorizontalOptions="End" >
+                <Label FontSize="11" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White" Text="{Binding dv_duration}"></Label>
+            </StackLayout>
+
+        </Grid>
+
+        <StackLayout  Padding="0,10,0,10" Orientation="Horizontal">
+
+            <!--Channel_Image-->
+            <StackLayout Margin="3,0,0,0" Orientation="Horizontal" WidthRequest="46" HorizontalOptions="Start" VerticalOptions="Center">
+                <forms:CachedImage Margin="0,0,2,0"  HeightRequest="40"  WidthRequest="40" DownsampleToViewSize="true" Aspect="AspectFill"  Source = "{Binding Owner_avatar}">
+                    <forms:CachedImage.Transformations >
+                        <transformations:CircleTransformation BorderHexColor="#ffff"/>
+                    </forms:CachedImage.Transformations>
+                </forms:CachedImage>
+
+            </StackLayout>
+
+            <StackLayout Margin="0,-5,0,0" Padding="2" HorizontalOptions="Start">
+
+                <StackLayout Orientation="Horizontal">
+                    <!--Video_Title-->
+                    <Label  Text="{Binding dv_title}" FontSize="15"  HorizontalOptions="StartAndExpand" TextColor="#444"/>
+
+                    <Label  VerticalOptions="Start" HorizontalOptions="End" Style="{StaticResource IoniconsFontIcon}" TextColor="#888" FontSize="22" Text="{ x:Static local1:IoniciconsFont.AndroidMoreVertical}" Margin="5,0,10,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+
+                    <!--Channel_Name-->
+                    <Label Text="{Binding Owner_username}" FontSize ="13" HorizontalOptions="Fill" TextColor="#a1a1a1" />
+
+                    <!--isVerified-->
+                    <Label  VerticalOptions="Center" IsVisible="{Binding Owner_verified}"  Style="{StaticResource IoniconsFontIcon}" TextColor="DodgerBlue" FontSize="13" Text="{ x:Static local1:IoniciconsFont.CheckmarkCircled}" Margin="1,0,5,2"></Label>
+
+                    <!--Views-->
+                    <Label Text="{Binding dv_views}" FontSize ="13" HorizontalOptions="Fill" TextColor="#a1a1a1"/>
+
+                    <!--Time-->
+                    <Label Text="{Binding dv_time_ago}" FontSize ="13" HorizontalOptions="Fill" TextColor="#a1a1a1" />
+
+                </StackLayout>
+
+            </StackLayout>
+
+        </StackLayout>
+
+        <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#efefef"></BoxView>
+
+    </StackLayout>
+</ContentView>

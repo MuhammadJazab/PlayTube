@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlayTube.Pages.Custom_View.Section_View_Template">
+
+    <StackLayout x:Name="MainStackPanel" VerticalOptions="Start" BackgroundColor="White" Margin="-5" HeightRequest="60" Padding="5,2,5,2">
+        <StackLayout Orientation="Horizontal" VerticalOptions="Start" >
+            <Label x:Name="Name" Text="{Binding Name}" HorizontalOptions="StartAndExpand" Margin="10,9,0,10" TextColor="#444" />
+            <Label x:Name="Lbl_SEE_ALL" HorizontalOptions="End" FontSize="12"  Margin="0,12,6,10" TextColor="{StaticResource AccentColor}" />
+        </StackLayout>
+        <BoxView x:Name="Liner" HeightRequest="1" Margin="0,-4,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="#efefef"></BoxView>
+    </StackLayout>
+
+</ContentView>

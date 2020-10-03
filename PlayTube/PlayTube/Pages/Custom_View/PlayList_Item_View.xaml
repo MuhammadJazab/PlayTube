@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:local1="clr-namespace:PlayTube.Controls;assembly=PlayTube"
+             x:Class="PlayTube.Pages.Custom_View.PlayList_Item_View">
+
+    <ContentView.Content>
+        <StackLayout x:Name="MainStackPanel" VerticalOptions="Center" BackgroundColor="White" Margin="-5" HeightRequest="100" Padding="5">
+
+            <StackLayout Orientation="Horizontal" Margin="2,1,5,4">
+
+                <Grid HorizontalOptions="Start"  MinimumWidthRequest="144" Margin="8,0,6,0" WidthRequest="154" HeightRequest="57">
+                    <!--Video_Image-->
+                    <forms:CachedImage HeightRequest="52" WidthRequest="90" LoadingPlaceholder="ImagePlacholder.jpg" DownsampleToViewSize="true"  Aspect="AspectFill" HorizontalOptions="FillAndExpand"  Source = "{Binding dp_Image}">
+                        <!--forms:CachedImage.Transformations>
+                                <transformations:RoundedTransformation Radius="0"/>
+                        </forms:CachedImage.Transformations>-->
+                    </forms:CachedImage>
+
+                    <!--Duration-->
+                    <StackLayout BackgroundColor="#444" Grid.Row="0" Opacity="0.9"  WidthRequest="70" Margin="5,0,-9,0" HeightRequest="18" HorizontalOptions="End" >
+                        <Label FontSize="18" Margin="1,16,0,0" HorizontalOptions="Center" TextColor="White" Text="{Binding dp_totalSubVideo}"></Label>
+                        <Label  Style="{StaticResource IoniconsFontIcon}" Margin="0,10,0,0" TextColor="White"  HorizontalOptions="Center" FontSize="28" Text="{ x:Static local1:IoniciconsFont.RadioWaves}" ></Label>
+                    </StackLayout>
+
+                </Grid>
+
+                <StackLayout Orientation="Vertical" HorizontalOptions="Fill" Margin="5" Padding="10,0,0,0">
+                    <!--PlayList_Name-->
+                    <Label x:Name="PlayList_Name"  Text="{Binding dp_name}" FontSize="15"  HorizontalOptions="StartAndExpand" TextColor="#444"/>
+
+                    <!--PlayList_Description-->
+                    <Label x:Name="PlayList_Description" Text="{Binding dp_description}" LineBreakMode="WordWrap" FontSize ="13" HorizontalOptions="Fill" TextColor="#a1a1a1" />
+                </StackLayout>
+
+            </StackLayout>
+            <BoxView x:Name="Liner" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#efefef"></BoxView>
+
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

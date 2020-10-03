@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:languish="clr-namespace:PlayTube.Languish;assembly=PlayTube"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:local1="clr-namespace:PlayTube.Controls;assembly=PlayTube"
+             x:Class="PlayTube.Pages.Default.SubPlayListsVideos_Page">
+
+    <StackLayout x:Name="MainStackPanel" BackgroundColor="White"  Padding="5,0,5,0" Margin="0,0,0,0">
+
+        <ListView x:Name="PlayListsVideosListView" ItemsSource="ListItemsCollection" VerticalOptions="FillAndExpand" 
+                  ItemSelected="PlayListsVideosListView_OnItemSelected" ItemTapped="PlayListsVideosListView_OnItemTapped" HasUnevenRows="True" SeparatorVisibility="None"  BackgroundColor="White">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Height="100">
+                        <ViewCell.View>
+                            <StackLayout Orientation="Horizontal" Margin="2,1,5,4">
+
+                                <Grid HorizontalOptions="Start" MinimumWidthRequest="140" Margin="8,0,6,0" WidthRequest="140" HeightRequest="90">
+                                    <!--Video_Image-->
+                                    <forms:CachedImage  HeightRequest="90" MinimumHeightRequest="90" MinimumWidthRequest="140" WidthRequest="140" LoadingPlaceholder="ImagePlacholder.jpg"
+                                                        DownsampleToViewSize="False" FadeAnimationEnabled="true"  Aspect="AspectFill" HorizontalOptions="FillAndExpand" Source = "{Binding dv_thumbnail}">
+                                        <!--<forms:CachedImage.Transformations>
+                                                      <transformations:RoundedTransformation Radius="0"/>
+                                                 </forms:CachedImage.Transformations>-->
+                                    </forms:CachedImage>
+                                    <!--Duration-->
+                                    <StackLayout BackgroundColor="#444" Grid.Row="0" Opacity="0.9" VerticalOptions="End" WidthRequest="32" Margin="-50,-40,7,5" HeightRequest="16" HorizontalOptions="EndAndExpand" >
+                                        <Label FontSize="11" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White" Text="{Binding dv_duration}"></Label>
+                                    </StackLayout>
+
+                                </Grid>
+
+                                <StackLayout Orientation="Vertical" Margin="5" Padding="10,0,0,0">
+                                    <!--Title-->
+                                    <Label Text="{Binding dv_title}" FontSize="12"  HorizontalOptions="StartAndExpand" TextColor="{Binding SV_TextColor}" />
+
+                                    <StackLayout Orientation="Horizontal" Margin="0,-3,0,0">
+                                        <!--Channel name-->
+                                        <Label Text="{Binding Owner_username}" LineBreakMode="WordWrap" FontSize="12" TextColor="{Binding SV_TextColor}"></Label>
+                                        <!--isVerified-->
+                                        <Label   VerticalOptions="Center" IsVisible="{Binding Owner_verified}"  Style="{StaticResource IoniconsFontIcon}" TextColor="DodgerBlue" FontSize="13" Text="{ x:Static local1:IoniciconsFont.CheckmarkCircled}" Margin="1,0,5,2"></Label>
+                                    </StackLayout>
+
+                                    <!--Category and Time-->
+                                    <StackLayout Orientation="Horizontal" >
+                                        <Label TextColor="{StaticResource AccentColor}" Text="{Binding dv_category_name}" FontSize="10" />
+                                        <!--<Label TextColor="{StaticResource AccentColor}" Text="|" FontSize="10" />
+                                        <Label Text="{Binding dv_time_ago}" TextColor="{Binding SV_TextColor}" Opacity="0.7" FontSize="10" />-->
+                                    </StackLayout>
+                                </StackLayout>
+
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!--EmptyPage-->
+        <StackLayout  x:Name="EmptyPage"  VerticalOptions="CenterAndExpand" Margin="0,-6,0,0"  IsVisible="True" Orientation="Vertical"   >
+            <Grid  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="40*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--ICON BACKGROUND-->
+                    <Label Grid.Row="0" Text="&#xf111;" Style="{StaticResource DefaultFontColor}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="200" Opacity="0.1"/>
+
+                    <!--ICON BACKGROUND-->
+                    <Label Grid.Row="0" Text="&#xf111;" Style="{StaticResource DefaultFontColor}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="130" Opacity="0.1"/>
+
+                    <!--ICON-->
+                    <Label Grid.Row="0" Text="&#xf03d;" Style="{StaticResource DefaultFontColor}" FontSize="60" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+                    <!--TEXT -->
+                    <StackLayout Grid.Row="1" VerticalOptions="Center" Padding="50,0" Spacing="2">
+
+                        <Label x:Name="Label_Empty" TranslationY="-3" HorizontalTextAlignment="Center" Text="{languish:Translate Label_Empty_PlayLists}" FontSize="24" FontAttributes="Bold" TextColor="#444"/>
+
+                        <Label x:Name="Label_Go_back" TranslationY="3" HorizontalTextAlignment="Center" Opacity="0.8" Text="{languish:Translate Label_Go_back_and_watched_any_video}" FontSize="18" TextColor="#444"/>
+
+                    </StackLayout>
+
+                </Grid>
+
+                <!--BUTTON Search Random-->
+                <!--
+                    <StackLayout Padding="23,0,23,3" Grid.Row="1">
+                        <Button x:Name="SearchButton" Style="{DynamicResource PrimaryActionButtonStyle}" VerticalOptions="End" Text="{languish:Translate Label_Search_Random_News}" Margin="2" Clicked="SearchButton_OnClicked" />
+                    </StackLayout>-->
+
+            </Grid>
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="PlayTube.Pages.Custom_View.Video_Overlayout_Template">
+
+
+    <Frame HasShadow="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" CornerRadius="0" HeightRequest="110" Margin="-3,0,0,0" WidthRequest="155"  Padding="2">
+
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="90" WidthRequest="153">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" MinimumWidthRequest="60" Margin="-3" HeightRequest="60" WidthRequest="60">
+
+
+                <forms:CachedImage HeightRequest="65" LoadingPlaceholder="ImagePlacholder.jpg"  DownsampleToViewSize="true" BackgroundColor="Black"  Aspect="AspectFill" HorizontalOptions="Fill"
+                                   Source ="{Binding dv_thumbnail}">
+                    <!--<forms:CachedImage.Transformations>
+                        <transformations:BlurredTransformation   Radius="10"/>
+                    </forms:CachedImage.Transformations>-->
+                </forms:CachedImage>
+
+                <StackLayout VerticalOptions="End" Grid.Row="0" BackgroundColor="Black" HeightRequest="30" Opacity="0.4" HorizontalOptions="StartAndExpand"/>
+                <!--Video_Title-->
+                <Label VerticalOptions="End" Grid.Row="0"  TextColor="#ffff" FontSize="14" Text="{Binding dv_title}" Margin="5,0,5,7" />
+
+                <!--Duration-->
+                <StackLayout BackgroundColor="#444" Grid.Row="0" Opacity="0.9" VerticalOptions="End" WidthRequest="32" Margin="-50,-40,7,5" HeightRequest="16" HorizontalOptions="End" >
+                    <Label FontSize="11" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White" Text="{Binding dv_duration}"></Label>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </Frame>
+</ContentView>

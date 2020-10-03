@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="PlayTube.Pages.Custom_View.Category_Item_Template">
+
+    <Frame x:Name="MainStackPanel" BackgroundColor="White" HasShadow="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" CornerRadius="7" HeightRequest="80" WidthRequest="75"  Padding="2">
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="70">
+            <Grid HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" MinimumWidthRequest="60" Margin="-3" HeightRequest="60" WidthRequest="60">
+                <forms:CachedImage  HeightRequest="65" DownsampleToViewSize="true" LoadingPlaceholder="ImagePlacholder.jpgs" BackgroundColor="White"  Aspect="AspectFill" HorizontalOptions="Fill" Source ="{Binding Image}">
+                    <!--<forms:CachedImage.Transformations>
+                        -->
+                    <!--<transformations:BlurredTransformation Radius="10"/>-->
+                    <!--
+                    </forms:CachedImage.Transformations>-->
+                </forms:CachedImage>
+
+                <!--<Grid BackgroundColor="{Binding BackgroundColor}" Opacity="0.5"></Grid>-->
+
+                <Label  VerticalOptions="Center" Grid.Row="0" HorizontalOptions="Center" Style="{StaticResource IoniconsFontIcon}" TextColor="#ffff" FontSize="22" Text="{Binding Icon}" Margin="5,0,5,7">
+                    <!--<Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
+                </Label.GestureRecognizers>-->
+                </Label>
+            </Grid>
+
+            <StackLayout x:Name="LayoutofLabel" BackgroundColor="#ffff" HeightRequest="30"  Opacity="0.9" VerticalOptions="Center"  HorizontalOptions="CenterAndExpand" >
+                <Label x:Name="Name" FontSize="11" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="#444" Text="{Binding Name}"></Label>
+            </StackLayout>
+
+        </StackLayout>
+    </Frame>
+</ContentView>

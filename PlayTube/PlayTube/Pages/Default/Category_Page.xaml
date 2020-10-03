@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PlayTube.Controls;assembly=PlayTube"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="PlayTube.Pages.Default.Category_Page">
+
+    <ContentPage.Content>
+        <ListView x:Name="CategoryListView" TranslationY="0" IsVisible="True" ItemSelected="CategoryListView_OnItemSelected" ItemTapped="CategoryListView_OnItemTapped" HasUnevenRows="True" SeparatorVisibility="None"  BackgroundColor="White" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Height="80" >
+                        <Frame HasShadow="True" HeightRequest="80" Padding="0" Margin="2" >
+                            <Grid>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!--Image-->
+                                <forms:CachedImage Grid.Row="0"  FadeAnimationEnabled="true" LoadingPlaceholder="ImagePlacholder.jpg" Source="{Binding Image}" Aspect="AspectFill" HeightRequest="80" />
+
+                                <Grid BackgroundColor="{Binding BackgroundColor}" Opacity="0.3"></Grid>
+
+                                <!--Catigories-->
+                                <StackLayout Padding="1" Grid.Row="0"  Grid.Column="0" VerticalOptions="Center"  HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="5"  >
+                                    <Label  FontAttributes="Bold" Text="{Binding Name}" HorizontalOptions="StartAndExpand" TextColor="White" />
+                                    <!--<Label Text="{Binding News_id}" TextColor="White" />-->
+
+                                    <Label FontSize="17" VerticalOptions="Center" HorizontalOptions="End"  Margin="5" Style="{StaticResource IoniconsFontIcon}" TextColor="#efefef" Text="{ x:Static local:IoniciconsFont.AndroidArrowDroprightCircle}" />
+
+                                </StackLayout>
+
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

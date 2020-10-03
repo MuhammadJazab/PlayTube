@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Label_About" xml:space="preserve">
+    <value>معلومات عنا</value>
+  </data>
+  <data name="Label_Add_The_Videos_To_PlayList" xml:space="preserve">
+    <value>إضافة مقاطع الفيديو إلى قائمة التشغيل</value>
+  </data>
+  <data name="Label_Add_The_Videos_to_watch_Later" xml:space="preserve">
+    <value>إضافة مقاطع الفيديو لمشاهدتها لاحقا</value>
+  </data>
+  <data name="Label_Add_The_Video_to_Liked" xml:space="preserve">
+    <value>أضف الفيديو الذي يعجبك</value>
+  </data>
+  <data name="Label_Add_to" xml:space="preserve">
+    <value>اضف إلى</value>
+  </data>
+  <data name="Label_Add_to_play_list" xml:space="preserve">
+    <value>أضف إلى قائمة التشغيل</value>
+  </data>
+  <data name="Label_Add_to_watch_later" xml:space="preserve">
+    <value>إضافة لمشاهدة لاحقا</value>
+  </data>
+  <data name="Label_ALL" xml:space="preserve">
+    <value>الكل</value>
+  </data>
+  <data name="Label_Already_a_User_Login_now" xml:space="preserve">
+    <value>مستخدم مسبق؟ سجل دخول</value>
+  </data>
+  <data name="Label_Cancel" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="Label_Cars_Vehicles" xml:space="preserve">
+    <value>السيارات والسيارات</value>
+  </data>
+  <data name="Label_Categories" xml:space="preserve">
+    <value>الاقسام</value>
+  </data>
+  <data name="Label_Check_Your_Internet" xml:space="preserve">
+    <value>الرجاء التحقق من اتصال الانترنت الخاص بك</value>
+  </data>
+  <data name="Label_Choose_your_action" xml:space="preserve">
+    <value>اختر الإجراء</value>
+  </data>
+  <data name="Label_Comedy" xml:space="preserve">
+    <value>كوميديا</value>
+  </data>
+  <data name="Label_Comments" xml:space="preserve">
+    <value>تعليقات</value>
+  </data>
+  <data name="Label_Copy_Url" xml:space="preserve">
+    <value>إنسخ الرابط</value>
+  </data>
+  <data name="Label_Dont_worry_type_your_email" xml:space="preserve">
+    <value>لا تقلق اكتب البريد الإلكتروني الخاص بك هنا، ونحن سوف استرداد لك</value>
+  </data>
+  <data name="Label_Email" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="Label_Email_Has_Been_Send" xml:space="preserve">
+    <value>تم إرسال البريد الإلكتروني</value>
+  </data>
+  <data name="Label_Empty_search" xml:space="preserve">
+    <value>بحث خالي</value>
+  </data>
+  <data name="Label_Empty_Videos" xml:space="preserve">
+    <value>لا يوجد فيدو</value>
+  </data>
+  <data name="Label_Entertainment" xml:space="preserve">
+    <value>وسائل الترفيه</value>
+  </data>
+  <data name="Label_Error" xml:space="preserve">
+    <value>خطأ</value>
+  </data>
+  <data name="Label_Featured_Video" xml:space="preserve">
+    <value>مقاطع فيديو مميزة</value>
+  </data>
+  <data name="Label_Film_Animation" xml:space="preserve">
+    <value>فيلم والرسوم المتحركة</value>
+  </data>
+  <data name="Label_Forgot_your_password" xml:space="preserve">
+    <value>نسيت كلمة المرور</value>
+  </data>
+  <data name="Label_Gaming" xml:space="preserve">
+    <value>الألعاب</value>
+  </data>
+  <data name="Label_Go_back_and_liked_any_video" xml:space="preserve">
+    <value>انتقل إلى الخلف وأعجب بأي فيديو تريد</value>
+  </data>
+  <data name="Label_Header_Walkpage1" xml:space="preserve">
+    <value>أهلاً بك</value>
+  </data>
+  <data name="Label_Header_Walkpage2" xml:space="preserve">
+    <value>يكتشف</value>
+  </data>
+  <data name="Label_Header_Walkpage3" xml:space="preserve">
+    <value>المفضلة</value>
+  </data>
+  <data name="Label_History" xml:space="preserve">
+    <value>سجل المشاهدة</value>
+  </data>
+  <data name="Label_History_Videos" xml:space="preserve">
+    <value>سجل المشاهدة الفيدو</value>
+  </data>
+  <data name="Label_How_to_Style" xml:space="preserve">
+    <value>How-to &amp; Style</value>
+  </data>
+  <data name="Label_Latest_videos" xml:space="preserve">
+    <value>أحدث مقاطع الفيديو</value>
+  </data>
+  <data name="Label_Liked_Videos" xml:space="preserve">
+    <value>مقاطع فيديو تم الإعجاب بها</value>
+  </data>
+  <data name="Label_Login" xml:space="preserve">
+    <value>تسجيل الدخول</value>
+  </data>
+  <data name="Label_Login_Not_Correct" xml:space="preserve">
+    <value>تسجيل الدخول ليس صحيحا، خطأ اسم المستخدم أو كلمة المرور</value>
+  </data>
+  <data name="Label_Logout" xml:space="preserve">
+    <value>تسجيل الخروج</value>
+  </data>
+  <data name="Label_Music" xml:space="preserve">
+    <value>موسيقى</value>
+  </data>
+  <data name="Label_My_Channel" xml:space="preserve">
+    <value>قناتي</value>
+  </data>
+  <data name="Label_News_Politics" xml:space="preserve">
+    <value>News &amp; Politics</value>
+  </data>
+  <data name="Label_Next" xml:space="preserve">
+    <value>التالى</value>
+  </data>
+  <data name="Label_No" xml:space="preserve">
+    <value>لا</value>
+  </data>
+  <data name="Label_Non_profits_Activism" xml:space="preserve">
+    <value>Non-profits &amp; Activism</value>
+  </data>
+  <data name="Label_OK" xml:space="preserve">
+    <value>حسنا</value>
+  </data>
+  <data name="Label_Oops_no_videos_by_this_category" xml:space="preserve">
+    <value>عفوا، يبدو أنه لا توجد مقاطع فيديو بهذه الفئة</value>
+  </data>
+  <data name="Label_Password" xml:space="preserve">
+    <value>كلمه السر</value>
+  </data>
+  <data name="Label_People_Blogs" xml:space="preserve">
+    <value>الناس والمدونات</value>
+  </data>
+  <data name="Label_Pets_Animals" xml:space="preserve">
+    <value>الحيوانات الأليفة الحيوانات</value>
+  </data>
+  <data name="Label_PlayLists" xml:space="preserve">
+    <value>قوائم التشغيل</value>
+  </data>
+  <data name="Label_PlayLists_Videos" xml:space="preserve">
+    <value>قوائم تشغيل مقاطع الفيديو</value>
+  </data>
+  <data name="Label_Please_Enter_Valid_Email" xml:space="preserve">
+    <value>الرجاء إدخال بريد إلكتروني صحيح</value>
+  </data>
+  <data name="Label_Please_sign_in_Dislike" xml:space="preserve">
+    <value>الرجاء تسجيل الدخول لإضافة مقاطع الفيديو التي لم تعجبك</value>
+  </data>
+  <data name="Label_Please_sign_in_Liked" xml:space="preserve">
+    <value>الرجاء تسجيل الدخول لإضافة مقاطع الفيديو التي أعجبتك</value>
+  </data>
+  <data name="Label_Please_sign_in_Playlist" xml:space="preserve">
+    <value>الرجاء تسجيل الدخول لإضافة إضافة إلى قائمة تشغيل مقاطع الفيديو</value>
+  </data>
+  <data name="Label_Please_sign_in_Subcribed" xml:space="preserve">
+    <value>الرجاء تسجيل الدخول للاشتراك في القناة</value>
+  </data>
+  <data name="Label_Please_wait" xml:space="preserve">
+    <value>...أرجو الإنتظار</value>
+  </data>
+  <data name="Label_Please_Write_your_full_email" xml:space="preserve">
+    <value>يرجى كتابة عنوان بريدك الإلكتروني بالكامل</value>
+  </data>
+  <data name="Label_Profile" xml:space="preserve">
+    <value>الملف الشخصي</value>
+  </data>
+  <data name="Label_Random_Videos" xml:space="preserve">
+    <value>مقاطع فيديو عشوائية</value>
+  </data>
+  <data name="Label_Register" xml:space="preserve">
+    <value>تسجيل</value>
+  </data>
+  <data name="Label_Register_now_and_start_watching" xml:space="preserve">
+    <value>سجل الآن وبدء مشاهدة أشرطة الفيديو</value>
+  </data>
+  <data name="Label_Register_now" xml:space="preserve">
+    <value>سجل الان</value>
+  </data>
+  <data name="Label_Remove_Subcribed_Channel" xml:space="preserve">
+    <value>إزالة القناة المشتركة</value>
+  </data>
+  <data name="Label_Remove_The_Video_to_Liked" xml:space="preserve">
+    <value>أزل الفيديو الذي يعجبك</value>
+  </data>
+  <data name="Label_Repeat_Password" xml:space="preserve">
+    <value>اعد كلمة السر</value>
+  </data>
+  <data name="Label_Retry" xml:space="preserve">
+    <value>إعادة المحاولة</value>
+  </data>
+  <data name="Label_Search_Random" xml:space="preserve">
+    <value>بحث عشوائي</value>
+  </data>
+  <data name="Label_Security" xml:space="preserve">
+    <value>الأمان</value>
+  </data>
+  <data name="Label_Send" xml:space="preserve">
+    <value>إرسال</value>
+  </data>
+  <data name="Label_Session_Dead" xml:space="preserve">
+    <value>جلسة العمل غير صالحة أو منتهية الصلاحية وسوف يتم تسجيل الخروج تلقائيا، إعادة تشغيل التطبيق الخاص بك لتسجيل الدخول مرة أخرى</value>
+  </data>
+  <data name="Label_Share" xml:space="preserve">
+    <value>شارك</value>
+  </data>
+  <data name="Label_Sign_up" xml:space="preserve">
+    <value>سجل</value>
+  </data>
+  <data name="Label_Sports" xml:space="preserve">
+    <value>رياضات</value>
+  </data>
+  <data name="Label_Start_search" xml:space="preserve">
+    <value>ابدأ البحث</value>
+  </data>
+  <data name="Label_Subcribed_Channel" xml:space="preserve">
+    <value>القناة المشتركة</value>
+  </data>
+  <data name="Label_Subscribe" xml:space="preserve">
+    <value>الاشتراك</value>
+  </data>
+  <data name="Label_Subscribed" xml:space="preserve">
+    <value>مشترك</value>
+  </data>
+  <data name="Label_Subscriptions" xml:space="preserve">
+    <value>اشتراكات</value>
+  </data>
+  <data name="Label_Top_videos" xml:space="preserve">
+    <value>أهم مقاطع الفيديو</value>
+  </data>
+  <data name="Label_Travel_Events" xml:space="preserve">
+    <value>السفر والأحداث</value>
+  </data>
+  <data name="Label_Trending" xml:space="preserve">
+    <value>الشائع</value>
+  </data>
+  <data name="Label_Upload" xml:space="preserve">
+    <value>تحميل</value>
+  </data>
+  <data name="Label_Up_next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="Label_Url_Copyed" xml:space="preserve">
+    <value>تم نسخ الرابط</value>
+  </data>
+  <data name="Label_Username" xml:space="preserve">
+    <value>اسم المستخدم</value>
+  </data>
+  <data name="Label_Use_your_credentials_to_login" xml:space="preserve">
+    <value>استخدم بيانات الاعتماد لتسجيل الدخول</value>
+  </data>
+  <data name="Label_Videos" xml:space="preserve">
+    <value>مقاطع فيديو</value>
+  </data>
+  <data name="Label_Videos_by" xml:space="preserve">
+    <value>مقاطع الفيديو بحسب</value>
+  </data>
+  <data name="Label_Videos_Categories" xml:space="preserve">
+    <value>اقسام الفيديو</value>
+  </data>
+  <data name="Label_Views" xml:space="preserve">
+    <value>مشاهدات</value>
+  </data>
+  <data name="Label_View_videos_random" xml:space="preserve">
+    <value>عرض مقاطع الفيديو عشوائية</value>
+  </data>
+  <data name="Label_Walkpage1" xml:space="preserve">
+    <value>Label Walkpage1</value>
+  </data>
+  <data name="Label_Walkpage2" xml:space="preserve">
+    <value>Label Walkpage2</value>
+  </data>
+  <data name="Label_Walkpage3" xml:space="preserve">
+    <value>Label Walkpage3</value>
+  </data>
+  <data name="Label_Watch_Later_Videos" xml:space="preserve">
+    <value>مشاهدة الفيديو لاحقاً</value>
+  </data>
+  <data name="Label_Welcome_to" xml:space="preserve">
+    <value>مرحبا بك في</value>
+  </data>
+  <data name="Label_Yes" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+  <data name="Label_Your_Password_Dont_Match" xml:space="preserve">
+    <value>كلمة المرور لا تتطابق</value>
+  </data>
+  <data name="Label_SEE_ALL" xml:space="preserve">
+    <value>عرض الكل</value>
+  </data>
+  <data name="Label_Home" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
+  <data name="Label_More" xml:space="preserve">
+    <value>أخر</value>
+  </data>
+  <data name="Label_Watch_Later" xml:space="preserve">
+    <value>المشاهدة لاحقاً</value>
+  </data>
+  <data name="Label_Go_back_and_watched_any_video" xml:space="preserve">
+    <value>انتقل إلى الخلف وشاهد أي فيديو تريد</value>
+  </data>
+  <data name="Label_Empty_PlayLists" xml:space="preserve">
+    <value>لا يوجد قوائم التشغيل</value>
+  </data>
+  <data name="Label_Dont_have_any_videos" xml:space="preserve">
+    <value>ليس لديك أي مقاطع فيديو</value>
+  </data>
+  <data name="Label_Finsh" xml:space="preserve">
+    <value>إنهاء</value>
+  </data>
+  <data name="Label_no_Videos_to_view" xml:space="preserve">
+    <value>لا توجد مقاطع فيديو لمشاهدتها</value>
+  </data>
+  <data name="Label_please_login_to_view_your_subscriptions" xml:space="preserve">
+    <value>الرجاء تسجيل الدخول لعرض اشتراكاتك</value>
+  </data>
+  <data name="Label_There_are_no_subscriptions" xml:space="preserve">
+    <value>لا توجد اشتراكات</value>
+  </data>
+  <data name="Label_Try_again_now" xml:space="preserve">
+    <value>أعد المحاولة الآن</value>
+  </data>
+  <data name="Label_Offline_Mode" xml:space="preserve">
+    <value>وضع غير متصل بالشبكة</value>
+  </data>
+  <data name="Label_Sorry_I_can_not_access" xml:space="preserve">
+    <value>عذرا لا يمكنك الدخول</value>
+  </data>
+  <data name="Label_Loading" xml:space="preserve">
+    <value>جار التحميل</value>
+  </data>
+  <data name="Label_Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="Label_Empty_Subscribes" xml:space="preserve">
+    <value>لا يوجد اشتراكات</value>
+  </data>
+  <data name="Label_Go_back_and_Subscribe_any_channel_you" xml:space="preserve">
+    <value>انتقل إلى الخلف و الاشتراك أي قناة لك</value>
+  </data>
+  <data name="Label_Import_new_video" xml:space="preserve">
+    <value>استيراد فيديو جديد</value>
+  </data>
+  <data name="Label_Add_comment" xml:space="preserve">
+    <value>أضف تعليق</value>
+  </data>
+  <data name="Label_please_login_to_view_your_comment" xml:space="preserve">
+    <value>الرجاء تسجيل الدخول لعرض التعليقات</value>
+  </data>
+  <data name="Label_Channel_Subscribed" xml:space="preserve">
+    <value>تم الاشتراك في القناة</value>
+  </data>
+  <data name="Label_No_videos_found_for_now" xml:space="preserve">
+    <value>لم يتم العثور على مقاطع فيديو في الوقت الحالي!</value>
+  </data>
+  <data name="Label_Not_interested" xml:space="preserve">
+    <value>غير مهتم</value>
+  </data>
+</root>

@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pullToRefresh="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             xmlns:abstractions="clr-namespace:SegmentedControl.FormsPlugin.Abstractions;assembly=SegmentedControl.FormsPlugin.Abstractions"
+             xmlns:languish="clr-namespace:PlayTube.Languish;assembly=PlayTube"
+             xmlns:local1="clr-namespace:PlayTube.Controls;assembly=PlayTube"
+             x:Class="PlayTube.Pages.Default.ChannelUsers_Page" Title="" BackgroundColor="White">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="CopyUrlButton" Text="{languish:Translate Label_Copy_Url}" Order="Secondary"  Clicked="CopyUrlButton_OnClicked"  />
+    </ContentPage.ToolbarItems>
+    <pullToRefresh:PullToRefreshLayout IsPullToRefreshEnabled="True" x:Name="PullToRefreshLayoutView"  >
+
+        <Grid>
+
+            <!--GRID WRAPPER-->
+            <Grid Padding="0" x:Name="layeringGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!--SOCIAL HEADER-->
+                <Grid Grid.Row="0" x:Name="FirstGridOfprofile" HeightRequest="252" BackgroundColor="Black" Padding="0">
+
+                    <!--BACKGROUND IMAGE-->
+                    <forms:CachedImage x:Name="CoverImage" IsOpaque="false" Opacity="0.9" LoadingPlaceholder="ImagePlacholder.jpg" BackgroundColor="{StaticResource AccentColor}" Aspect="AspectFill"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                                       FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                    </forms:CachedImage>
+
+                    <StackLayout x:Name="headers" Orientation="Vertical" TranslationY="9" Margin="0,7,0,0" Spacing="20">
+
+                        <Grid HorizontalOptions="Center" VerticalOptions="Center"  TranslationY="25">
+                            <!--AVATAR-->
+                            <shared:CircleImage x:Name="AvatarImage" BorderColor="White" Source="default_profile_6_400x400.png" WidthRequest="85" HeightRequest="85"/>
+                        </Grid>
+
+                        <!--USER NAME AND DESCRIPTION-->
+                        <StackLayout Padding="15">
+                            <Label x:Name="Lbl_Username" Text="" TextColor="White" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="19" />
+                            <Label x:Name="LastseenLabel" TextColor="White" HorizontalTextAlignment="Center" FontSize="15" Text="" />
+                        </StackLayout>
+
+                    </StackLayout>
+
+                    <!-- TOOLBAR -->
+                    <Grid VerticalOptions="End" Style="{StaticResource ToolbarStyle}" HeightRequest="34"  BackgroundColor="#ffff">
+                        <abstractions:SegmentedControl x:Name="SegControl"  ValueChanged="SegControl_OnValueChanged" HeightRequest="50" TintColor="#007AFF" SelectedSegment="0">
+                            <abstractions:SegmentedControl.Children>
+                                <abstractions:SegmentedControlOption  Text="{languish:Translate Label_Videos}" />
+                                <abstractions:SegmentedControlOption Text="{languish:Translate Label_About}" />
+                            </abstractions:SegmentedControl.Children>
+                        </abstractions:SegmentedControl>
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Row="1" >
+
+                    <StackLayout x:Name="VideosStack"  Padding="5,0,5,0" Margin="0,0,0,0">
+                        <ListView x:Name="VidoesListView" ItemsSource="ListItemsCollection"  ItemSelected="VidoesListView_OnItemSelected" ItemTapped="VidoesListView_OnItemTapped"
+                                  ItemAppearing="VidoesListView_OnItemAppearing" HasUnevenRows="True" SeparatorVisibility="None"  BackgroundColor="White">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell Height="100">
+                                        <ViewCell.View>
+                                            <StackLayout Orientation="Horizontal" Margin="2,1,5,4">
+
+                                                <Grid HorizontalOptions="Start" MinimumWidthRequest="140" Margin="8,0,6,0" WidthRequest="140" HeightRequest="90">
+                                                    <!--Video_Image-->
+                                                    <forms:CachedImage  HeightRequest="90" MinimumHeightRequest="90" MinimumWidthRequest="140" WidthRequest="140" LoadingPlaceholder="ImagePlacholder.jpg"
+                                                                        DownsampleToViewSize="False" FadeAnimationEnabled="true"  Aspect="AspectFill" HorizontalOptions="FillAndExpand" Source = "{Binding dv_thumbnail}">
+                                                        <!--<forms:CachedImage.Transformations>
+                                                      <transformations:RoundedTransformation Radius="0"/>
+                                                 </forms:CachedImage.Transformations>-->
+                                                    </forms:CachedImage>
+                                                    <!--Duration-->
+                                                    <StackLayout BackgroundColor="#444" Grid.Row="0" Opacity="0.9" VerticalOptions="End" WidthRequest="32" Margin="-50,-40,7,5" HeightRequest="16" HorizontalOptions="EndAndExpand" >
+                                                        <Label FontSize="11" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White" Text="{Binding dv_duration}"></Label>
+                                                    </StackLayout>
+
+                                                </Grid>
+
+                                                <StackLayout Orientation="Vertical" Margin="5" Padding="10,0,0,0">
+                                                    <!--Title-->
+                                                    <Label Text="{Binding dv_title}" FontSize="12"  HorizontalOptions="StartAndExpand" TextColor="{Binding SV_TextColor}" />
+
+                                                    <StackLayout Orientation="Horizontal" Margin="0,-3,0,0">
+                                                        <!--Channel name-->
+                                                        <Label Text="{Binding Owner_username}" LineBreakMode="WordWrap" FontSize="12" TextColor="{Binding SV_TextColor}"></Label>
+                                                        <!--isVerified-->
+                                                        <Label   VerticalOptions="Center" IsVisible="{Binding Owner_verified}"  Style="{StaticResource IoniconsFontIcon}" TextColor="DodgerBlue" FontSize="13" Text="{ x:Static local1:IoniciconsFont.CheckmarkCircled}" Margin="1,0,5,2"></Label>
+                                                    </StackLayout>
+
+                                                    <!--Category and Time-->
+                                                    <StackLayout Orientation="Horizontal" >
+                                                        <Label TextColor="{StaticResource AccentColor}" Text="{Binding dv_category_name}" FontSize="10" />
+                                                        <!--<Label TextColor="{StaticResource AccentColor}" Text="|" FontSize="10" />
+                                                        <Label Text="{Binding dv_time_ago}" TextColor="{Binding SV_TextColor}" Opacity="0.7" FontSize="10" />-->
+                                                    </StackLayout>
+                                                </StackLayout>
+
+                                            </StackLayout>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <StackLayout x:Name="EmptyVideos" Orientation="Vertical" IsVisible="False"  VerticalOptions="CenterAndExpand"  HeightRequest="600">
+
+                            <Image Source="Empty.png" HeightRequest="80" WidthRequest="80" Margin="0,20,0,20"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Aspect="Fill" ></Image>
+
+                            <!--TEXT -->
+                            <Label x:Name="Label_No_videos" TranslationY="-3" HorizontalTextAlignment="Center" Text="{languish:Translate Label_No_videos_found_for_now}" FontSize="20" FontAttributes="Bold" TextColor="#444"/>
+                            <!--<Label x:Name="Label_Go_back" TranslationY="3" HorizontalTextAlignment="Center" Opacity="0.8" Text="{languish:Translate Label_please_login_to_view_your_comment}" FontSize="15" TextColor="#444"/>-->
+
+                        </StackLayout>
+                        
+                    </StackLayout>
+
+                    <StackLayout x:Name="AboutStack" Padding="0,0,0,0" Grid.Row="0" Grid.Column="0" TranslationY="-6"  HorizontalOptions="FillAndExpand" >
+                        <ListView x:Name="UserInfoListView"  VerticalOptions="Start" SeparatorColor="White"  ItemSelected="UserInfoListView_OnItemSelected" ItemTapped="UserInfoListView_OnItemTapped"
+                                  SeparatorVisibility="Default" HasUnevenRows="True" BackgroundColor="White">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell >
+                                        <ViewCell.View>
+                                            <StackLayout Orientation="Horizontal" Padding="0,3,3,8" Margin="5,1,0,1">
+                                                <Label FontSize="18"  FontAttributes="None" Style="{StaticResource FontIcon}" FontFamily="{x:Static shared:FontAwesome.FontName}" Margin="9,5,0,0"  Text="{Binding Icon}" TextColor="{Binding Color}" />
+                                                <Label FontSize="16"  LineBreakMode="WordWrap"  FontAttributes="None" Margin="13,2,0,0" Text="{Binding Label}" TextColor="{ Binding TextColor}"  />
+                                            </StackLayout>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+
+                </Grid>
+            </Grid>
+
+            <Grid x:Name="HeaderOfpage" MinimumHeightRequest="50" VerticalOptions="Start"  HeightRequest="50"  BackgroundColor="Transparent" Style="{ StaticResource CustomNavBarStyle }"  Padding="0">
+
+                <Image Source="custom_nav_bg.jpg" VerticalOptions="Center" Aspect="AspectFill"/>
+                <StackLayout WidthRequest="20" HeightRequest="20" VerticalOptions="Center" TranslationX="2" Margin="12,0,1,0">
+                    <Label HorizontalOptions="Start"  Text="&#xf060;" FontSize="20" TextColor="#ffff" Style="{StaticResource DefaultFontColor}" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnbackIconTapped" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <Label  IsVisible="False" HorizontalOptions="Start" VerticalOptions="Center" x:Name="HeaderLabel"  Margin="35,0,4,0" TranslationX="7" Text="" FontSize="16" TextColor="#ffff"  Style="{StaticResource DefaultFontColor}"></Label>
+                <StackLayout WidthRequest="20" HeightRequest="20" HorizontalOptions="End" TranslationX="-5" Margin="1,0,8,0" VerticalOptions="Center">
+                    <Label x:Name="LblCopyUrl"  Text="&#xf0c1;" FontSize="20" TextColor="#ffff" Style="{StaticResource DefaultFontColor}" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CopyUrlButton_OnClicked" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </Grid >
+
+        </Grid>
+    </pullToRefresh:PullToRefreshLayout>
+</ContentPage>

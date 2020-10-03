@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:playTube="clr-namespace:PlayTube;assembly=PlayTube"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:languish="clr-namespace:PlayTube.Languish;assembly=PlayTube"
+             x:Class="PlayTube.Pages.Walkthrough.WalkThrough_Page2"
+             Appearing="WalkThrough_Page2_OnAppearing" BackgroundImage="{ x:Static playTube:Settings.Background_Image_WalkThrough_Page2 }">
+
+    <AbsoluteLayout Padding="0,0,0,0">
+        <!-- Background Image -->
+        <forms:CachedImage x:Name="Img_WalkThrough_Page2" Source="{x:Static playTube:Settings.Background_Image_WalkThrough_Page2}" Aspect="Fill" TranslationY="0" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" >
+            <forms:CachedImage.Transformations>
+                <transformations:BlurredTransformation Radius="19" />
+            </forms:CachedImage.Transformations>
+        </forms:CachedImage>
+
+        <Grid ColumnSpacing="0" RowSpacing="0" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" >
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
+
+            <!-- ROW 1 (MIDDLE) -->
+            <StackLayout Padding="20"  VerticalOptions="FillAndExpand" Grid.Row="1">
+                <!--<abstractions:FormsWebView x:Name="Webviewcooki" IsVisible="False"   HeightRequest="0"  WidthRequest="0"></abstractions:FormsWebView>-->
+                <StackLayout VerticalOptions="CenterAndExpand" Padding="30,0,30,10" HeightRequest="560">
+
+                    <Grid  VerticalOptions="Center" HorizontalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60*"/>
+                            <RowDefinition Height="40*"/>
+                        </Grid.RowDefinitions>
+
+                        <!--ICON BACKGROUND-->
+                        <Label Grid.Row="0" Text="&#xf111;"  Style="{StaticResource DefaultFontColor}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" FontSize="180" Opacity="0.2"/>
+
+                        <!--ICON BACKGROUND-->
+                        <Label Grid.Row="0" Text="&#xf111;" Style="{StaticResource DefaultFontColor}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="100" Opacity="0.8"/>
+
+                        <!--ICON-->
+                        <Label x:Name="IconLabel" Grid.Row="0" Text="&#xf002;" Style="{StaticResource FontIconBase}" FontSize="50" HorizontalTextAlignment="Center" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+                        <!--TEXT -->
+                        <StackLayout Grid.Row="1" VerticalOptions="Center" Padding="7,0" Spacing="2">
+
+                            <Label x:Name="HeaderLabel" TranslationY="-3" HorizontalTextAlignment="Center" HorizontalOptions="Center" Text="{languish:Translate Label_Header_Walkpage2}" FontSize="26" FontAttributes="Bold" TextColor="#ffff"/>
+
+                            <Label x:Name="DescriptionLabel" TranslationY="3"  HorizontalTextAlignment="Center" HorizontalOptions="Center" Opacity="0.8" Text="{languish:Translate Label_Walkpage2}" FontSize="18" TextColor="#ffff"/>
+
+                        </StackLayout>
+
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Margin="0,20,0,0" HorizontalOptions="Center" VerticalOptions="End">
+                    <Label  Text="&#xf111;"  Style="{StaticResource DefaultFontColor}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Start" FontSize="17" Opacity="0.3"/>
+                    <Label  Text="&#xf111;"  Style="{StaticResource DefaultFontColor}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Start" FontSize="19" Opacity="0.9"/>
+                    <Label  Text="&#xf111;"  Style="{StaticResource DefaultFontColor}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Start" FontSize="17" Opacity="0.3"/>
+                </StackLayout>
+
+            </StackLayout>
+
+            <!-- ROW 2 (BOTTOM) -->
+            <StackLayout  x:Name="OverlapedButtonContainer" Padding="15,2,15,0" VerticalOptions="EndAndExpand" Grid.Row="2">
+
+                <StackLayout  BackgroundColor="White" TranslationY="-15" VerticalOptions="Start" HeightRequest="1" Opacity="0.6" />
+
+                <Label x:Name="NextLabel" TranslationY="-10" HorizontalTextAlignment="End" HorizontalOptions="End" Margin="0,0,10,0" Text="{languish:Translate Label_Next}" FontSize="18" FontAttributes="Bold" TextColor="#ffff"/>
+                <!--<shared:Button  BackgroundColor="#895fd2"
+                                Style="{DynamicResource PrimaryActionButtonStyle}"
+                                x:Name="PrimaryActionButton"
+                                Text="{ languish:Translate Label_Next }"
+                                Clicked="OnPrimaryActionButtonClicked"
+                />-->
+            </StackLayout>
+
+            <!-- ROW 0 (TOP) -->
+            <!-- Close Icon -->
+
+            <!--<Label
+                Grid.Row="0"
+                TranslationX="-10"
+                TranslationY="10"
+                FontSize="30"
+                Text="{ x:Static local:WowonderShapesFont.Close }"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                TextColor="#ffff"
+                HeightRequest="30"
+                WidthRequest="30"
+                
+                Style="{StaticResource WowondershapesFontIcon}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCloseButtonClicked" />
+                </Label.GestureRecognizers>
+            </Label>-->
+
+        </Grid>
+
+    </AbsoluteLayout>
+</ContentPage>

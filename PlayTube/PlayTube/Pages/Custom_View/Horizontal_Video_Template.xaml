@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:local1="clr-namespace:PlayTube.Controls;assembly=PlayTube"
+             x:Class="PlayTube.Pages.Custom_View.Horizontal_Video_Template">
+
+    <StackLayout x:Name="MainStackPanel" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White" Margin="-5" HeightRequest="100" Padding="5">
+
+        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+
+            <Grid HorizontalOptions="Start"  MinimumWidthRequest="130" WidthRequest="130" Padding="4" Margin="5,0,6,0" HeightRequest="57">
+                <!--Video_Image-->
+                <forms:CachedImage  HeightRequest="52" WidthRequest="75" MinimumWidthRequest="75" LoadingPlaceholder="ImagePlacholder.jpg" DownsampleToViewSize="true"  Aspect="AspectFill" HorizontalOptions="FillAndExpand" Source="{Binding dv_thumbnail}">
+                    <!--<forms:CachedImage.Transformations>
+                        <transformations:RoundedTransformation Radius="0"/>
+                    </forms:CachedImage.Transformations>-->
+                </forms:CachedImage>
+                <!--Duration-->
+                
+                <StackLayout BackgroundColor="#444"  Opacity="0.9" VerticalOptions="End" WidthRequest="32" TranslationY="-2" TranslationX="4" HeightRequest="16" HorizontalOptions="End" >
+                    <Label FontSize="11" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White" Text="{Binding dv_duration}"></Label>
+                </StackLayout>
+
+            </Grid>
+
+            <StackLayout HorizontalOptions="StartAndExpand" Margin="3,1,1,0">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+
+                    <!--Video_Title-->
+                    <Label x:Name="Video_Title"  Text="{Binding dv_title}" FontSize="15"  HorizontalOptions="FillAndExpand" TextColor="#444"/>
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal" Margin="0,-3,0,0">
+                    <!--Channel_Name-->
+                    <Label x:Name="Channel_Name" Text="{Binding Owner_username}" FontSize ="13" HorizontalOptions="Fill" TextColor="#a1a1a1" />
+                    <!--isVerified-->
+                    <Label   VerticalOptions="Center" IsVisible="{Binding Owner_verified}"  Style="{StaticResource IoniconsFontIcon}" TextColor="DodgerBlue" FontSize="13" Text="{ x:Static local1:IoniciconsFont.CheckmarkCircled}" Margin="1,0,5,2"></Label>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Margin="0,-1,0,0">
+                    <!--Views-->
+                    <Label x:Name="Views" Text="{Binding dv_views}" FontSize ="13"  HorizontalOptions="Fill" TextColor="#a1a1a1"/>
+                    <!--Time--><!--
+                    <Label x:Name="Time" Text="{Binding dv_time_ago}" FontSize ="12" Margin="0,2,0,0" HorizontalOptions="Fill" TextColor="#a1a1a1" />-->
+
+                   
+                </StackLayout>
+                
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="End" MinimumWidthRequest="20" TranslationX="-2">
+                <Label  FontSize="25" Text="{ x:Static local1:IoniciconsFont.AndroidMoreVertical}" Style="{StaticResource IoniconsFontIcon}" TextColor="#888" WidthRequest="20" TranslationY="2" TranslationX="7" HorizontalOptions="End" VerticalTextAlignment="Start">
+                </Label>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+        </StackLayout>
+       
+       
+        <BoxView x:Name="Liner" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#efefef"></BoxView>
+    </StackLayout>
+</ContentView>

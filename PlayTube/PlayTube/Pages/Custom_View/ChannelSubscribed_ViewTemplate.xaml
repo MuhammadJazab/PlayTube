@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local1="clr-namespace:PlayTube.Controls;assembly=PlayTube"
+             xmlns:languish="clr-namespace:PlayTube.Languish;assembly=PlayTube"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             x:Class="PlayTube.Pages.Custom_View.ChannelSubscribed_ViewTemplate" BackgroundColor="#efefef">
+
+    <ContentView.Content>
+
+        <StackLayout x:Name="MainStackPanel" Orientation="Vertical" Padding="5,5,3,5"  BackgroundColor="White">
+            <StackLayout Orientation="Horizontal">
+
+                <shared:CircleImage x:Name="AvatarImage"  BorderColor="{StaticResource AccentColor}" BorderThickness="2" Source="{Binding Channel_avatar}" VerticalOptions="Center" WidthRequest="53" HeightRequest="53" Margin="8,0,0,0"/>
+              
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions ="CenterAndExpand" TranslationX="2">
+                    <!--Channel_username-->
+                    <Label FontSize="14" TextColor="{Binding SC_TextColor}" FontAttributes="Bold" Text="{Binding Channel_username}" />
+                    <!--Channel_about-->
+                    <!--<Label FontSize="12" Opacity="0.7" TextColor="{Binding SC_TextColor}" Text="{Binding Channel_about}" />-->
+                </StackLayout>
+             
+                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" MinimumHeightRequest="20" HeightRequest="23">
+                    <Frame  HorizontalOptions="End" CornerRadius="4" MinimumWidthRequest="35" x:Name="SubcribeFrame" HeightRequest="19" Padding="4,11,3,11" Margin="8,4,4,5" HasShadow="True" OutlineColor="#4ca5ff">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" >
+                            <Label  x:Name="IconSubcribe" VerticalOptions="Center"  Style="{StaticResource IoniconsFontIcon}" TextColor="{StaticResource AccentColor}" FontSize="13" Text="{ x:Static local1:IoniciconsFont.AndroidAdd}" Margin="7,2,5,2"></Label>
+                            <Label x:Name="SubcribeLabel"  FontSize ="13" HorizontalOptions="Fill" VerticalOptions="Center" Text="{languish:Translate Label_Subscribe}" Margin="1,2,5,2"  TextColor="{StaticResource AccentColor}" />
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SubcribeButton_Tabbed"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </StackLayout>
+                
+            </StackLayout>
+            <!--<Image  Margin="5,-23,0,0"  Source="{Binding verified}" Height="12" Width="12" HorizontalOptions="End"  />-->
+        </StackLayout>
+
+    </ContentView.Content>
+</ContentView>

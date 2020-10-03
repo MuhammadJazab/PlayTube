@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:languish="clr-namespace:PlayTube.Languish;assembly=PlayTube"
+             xmlns:pullToRefresh="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:local1="clr-namespace:PlayTube.Controls;assembly=PlayTube"
+             x:Class="PlayTube.Pages.Default.PlayListsVideos_Page" 
+             Title="{languish:Translate Label_PlayLists_Videos}" >
+
+    <StackLayout x:Name="MainStackPanel" BackgroundColor="White"  Padding="5,0,5,0" Margin="0,0,0,0">
+
+        <pullToRefresh:PullToRefreshLayout IsPullToRefreshEnabled="True" x:Name="PullToRefreshLayoutView"  >
+
+            <ListView x:Name="PlayListsVideosListView" ItemsSource="ListItemsCollection"  ItemSelected="PlayListsVideosListView_OnItemSelected" ItemTapped="PlayListsVideosListView_OnItemTapped" 
+                      IsPullToRefreshEnabled="False" Refreshing="PlayListsVideosListView_OnRefreshing" VerticalOptions="FillAndExpand" HasUnevenRows="True" SeparatorVisibility="None"  BackgroundColor="White">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="100">
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" Margin="2,1,5,4">
+
+                                    <Grid HorizontalOptions="Start"  MinimumWidthRequest="144" Margin="8,0,6,0" WidthRequest="154" HeightRequest="57">
+                                        <!--Video_Image-->
+                                        <forms:CachedImage HeightRequest="52" WidthRequest="90" LoadingPlaceholder="ImagePlacholder.jpg" DownsampleToViewSize="true"  Aspect="AspectFill" HorizontalOptions="FillAndExpand"  Source = "{Binding dp_Image}">
+                                            <!--<forms:CachedImage.Transformations>
+                                                            <transformations:RoundedTransformation Radius="0"/>
+                                                        </forms:CachedImage.Transformations>-->
+                                        </forms:CachedImage>
+
+                                        <!--Duration-->
+                                        <StackLayout BackgroundColor="#444" Grid.Row="0" Opacity="0.9"  WidthRequest="70" Margin="5,0,-9,0" HeightRequest="18" HorizontalOptions="End" >
+                                            <Label FontSize="18" Margin="1,16,0,0" HorizontalOptions="Center" TextColor="White" Text="{Binding dp_totalSubVideo}"></Label>
+                                            <Label  Style="{StaticResource IoniconsFontIcon}" Margin="0,10,0,0" TextColor="White"  HorizontalOptions="Center" FontSize="28" Text="{ x:Static local1:IoniciconsFont.RadioWaves}" ></Label>
+                                        </StackLayout>
+
+                                    </Grid>
+
+                                    <StackLayout Orientation="Vertical" Margin="5" Padding="10,0,0,0">
+                                        <!--PlayList_Name-->
+                                        <Label x:Name="PlayList_Name"  Text="{Binding dp_name}" FontSize="15"  HorizontalOptions="StartAndExpand" TextColor="{Binding dp_TextColor}"/>
+
+                                        <!--PlayList_Description-->
+                                        <Label x:Name="PlayList_Description" Text="{Binding dp_description}" Opacity="0.7" LineBreakMode="WordWrap" FontSize ="13" HorizontalOptions="Fill" TextColor="{Binding dp_TextColor}" />
+
+                                        <!--Number_videos-->
+                                        <Label x:Name="PlayList_Number_videos" Text="{Binding dp_totalSubVideo_String}" Opacity="0.7" FontSize ="11" HorizontalOptions="Fill" TextColor="{Binding dp_TextColor}" />
+
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+        </pullToRefresh:PullToRefreshLayout>
+
+        <!--EmptyPage-->
+        <StackLayout  x:Name="EmptyPage"  VerticalOptions="CenterAndExpand" Margin="0,-6,0,0"  IsVisible="False" Orientation="Vertical"   >
+            <Grid  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="40*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--ICON BACKGROUND-->
+                    <Label Grid.Row="0" Text="&#xf111;" Style="{StaticResource DefaultFontColor}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="200" Opacity="0.1"/>
+
+                    <!--ICON BACKGROUND-->
+                    <Label Grid.Row="0" Text="&#xf111;" Style="{StaticResource DefaultFontColor}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="130" Opacity="0.1"/>
+
+                    <!--ICON-->
+                    <Label x:Name="Icon_page" Grid.Row="0" Text="&#xf001;" Style="{StaticResource DefaultFontColor}" FontSize="60" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+                    <!--TEXT -->
+                    <StackLayout Grid.Row="1" VerticalOptions="Center" Padding="50,0" Spacing="2">
+
+                        <Label x:Name="Label_Empty" TranslationY="-3" HorizontalTextAlignment="Center" Text="{languish:Translate Label_Empty_PlayLists}" FontSize="24" FontAttributes="Bold" TextColor="#444"/>
+
+                        <Label x:Name="Label_Go_back" TranslationY="3" HorizontalTextAlignment="Center" Opacity="0.8" Text="{languish:Translate Label_Go_back_and_watched_any_video}" FontSize="18" TextColor="#444"/>
+
+                    </StackLayout>
+
+                </Grid>
+
+                <!--BUTTON again-->
+                <StackLayout Padding="23,0,23,3" Grid.Row="1">
+                    <Button x:Name="tryagainButton" Style="{DynamicResource PrimaryActionButtonStyle}" VerticalOptions="End" Text="{languish:Translate Label_Try_again_now }" Margin="2" Clicked="TryagainButton_OnClicked" />
+                </StackLayout>
+
+            </Grid>
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>

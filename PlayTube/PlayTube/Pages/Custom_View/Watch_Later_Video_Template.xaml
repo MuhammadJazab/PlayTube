@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:local1="clr-namespace:PlayTube.Controls;assembly=PlayTube"
+             x:Class="PlayTube.Pages.Custom_View.Watch_Later_Video_Template">
+
+    <StackLayout x:Name="MainStackPanel" VerticalOptions="Center" BackgroundColor="White" Margin="-5" HeightRequest="100" Padding="5">
+        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand"  >
+
+            <Grid HorizontalOptions="Start"  MinimumWidthRequest="130" WidthRequest="130" Padding="6" Margin="5,0,6,0" HeightRequest="57">
+                <!--Video_Image-->
+                <forms:CachedImage  HeightRequest="52" WidthRequest="75" MinimumWidthRequest="75" LoadingPlaceholder="ImagePlacholder.jpg" DownsampleToViewSize="true"  Aspect="AspectFill" HorizontalOptions="FillAndExpand" Source="{Binding dv_thumbnail}">
+                    <!--<forms:CachedImage.Transformations>
+                        <transformations:RoundedTransformation Radius="0"/>
+                    </forms:CachedImage.Transformations>-->
+                </forms:CachedImage>
+                <!--Duration-->
+
+                <StackLayout BackgroundColor="#444"  Opacity="0.9" VerticalOptions="End" WidthRequest="32" TranslationY="-2" TranslationX="7" HeightRequest="16" HorizontalOptions="End" >
+                    <Label FontSize="11" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White" Text="{Binding dv_duration}"></Label>
+                </StackLayout>
+
+                <Label  VerticalOptions="Start" HorizontalOptions="End" Style="{StaticResource IoniconsFontIcon}" TextColor="#ffff" FontSize="16" Text="{ x:Static local1:IoniciconsFont.IosClockOutline}" Margin="5,5,8,0">
+
+                </Label>
+            </Grid>
+            
+           
+
+            <StackLayout HorizontalOptions="Start">
+                <!--Video_Title-->
+                <StackLayout Orientation="Horizontal">
+                    <Label x:Name="Video_Title"  Text="{Binding dv_title}" FontSize="15"  HorizontalOptions="StartAndExpand" TextColor="#444"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Margin="0,-4,0,0">
+                    <!--Channel_Name-->
+                    <Label x:Name="Channel_Name" Text="{Binding Owner_username}" FontSize ="13" HorizontalOptions="Fill" TextColor="#a1a1a1" />
+                    <!--isVerified-->
+                    <Label   VerticalOptions="Center" IsVisible="{Binding Owner_verified}"  Style="{StaticResource IoniconsFontIcon}" TextColor="DodgerBlue" FontSize="13" Text="{ x:Static local1:IoniciconsFont.CheckmarkCircled}" Margin="1,0,5,2"></Label>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Margin="0,-2,0,0">
+                    <!--Views-->
+                    <Label x:Name="Views" Text="{Binding dv_views}" FontSize ="13"  HorizontalOptions="Fill" TextColor="#a1a1a1"/>
+                    <!--Time-->
+                    <Label x:Name="Time" Text="{Binding dv_time_ago}" FontSize ="12" Margin="0,2,0,0" HorizontalOptions="Fill" TextColor="#a1a1a1" />
+                </StackLayout>
+            </StackLayout>
+
+        </StackLayout>
+
+        <BoxView x:Name="Liner" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#efefef"></BoxView>
+    </StackLayout>
+</ContentView>

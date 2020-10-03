@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlayTube.Pages.Tabbes.MainTabbed_Page"
+             xmlns:tabbes="clr-namespace:PlayTube.Pages.Tabbes;assembly=PlayTube">
+
+
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem x:Name="Search"  Icon="Search.png" Clicked="Search_OnClicked" >
+            <ToolbarItem.Order>
+                <OnPlatform x:TypeArguments="ToolbarItemOrder"  iOS="Primary"   Android="Primary"/>
+            </ToolbarItem.Order>
+        </ToolbarItem>
+       
+    </ContentPage.ToolbarItems>
+    
+    <!--Pages can be added as references or inline-->
+    <tabbes:Home_Page  Icon="Home.png"/>
+    <tabbes:Trending_Page Icon="Trending.png"/>
+    <tabbes:WachLater_Page Icon="T_WachLater.png"/>
+    <tabbes:Subscriptions_Page Icon="T_Category.png"/>
+    <tabbes:Hamburg_Page Icon="T_Hamburg.png"/>
+   
+</TabbedPage>

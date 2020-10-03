@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customRenders="clr-namespace:PlayTube.CustomRenders;assembly=PlayTube"
+             x:Class="PlayTube.Pages.Custom_View.AdMob_ViewTemplate">
+    <ContentView.Content>
+        <StackLayout Margin="0,7,0,7">
+            <customRenders:AdMobView x:Name="AdmobBanner" IsVisible="True" BackgroundColor="White" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

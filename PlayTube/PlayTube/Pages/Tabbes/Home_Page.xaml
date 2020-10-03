@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local1="clr-namespace:PlayTube.Controls;assembly=PlayTube"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             xmlns:pullToRefresh="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
+             x:Class="PlayTube.Pages.Tabbes.Home_Page">
+
+    <ScrollView>
+
+        <StackLayout x:Name="MainStackPanel" BackgroundColor="White" Padding="5,0,5,0" Margin="0,0,0,0">
+
+            <!--TOP HEADER LOGO BAR-->
+            <Frame x:Name="TopHeaderBAR" HeightRequest="44" Padding="3" MinimumHeightRequest="17" HasShadow="True" Margin="-5,0,-5,0">
+                <StackLayout Orientation="Horizontal" Padding="8" >
+                    <Image x:Name="ImageLogo" Source="logo.png" HeightRequest="18" Margin="2,0,0,0" HorizontalOptions="StartAndExpand" Aspect="Fill" ></Image>
+                    <Label x:Name="SearchIcon"  VerticalOptions="Center"  HorizontalOptions="End"  Style="{StaticResource IoniconsFontIcon}" TextColor="#444" FontSize="20" Text="{ x:Static local1:IoniciconsFont.Search}" Margin="10,0,9,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Search_OnClicked" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <shared:CircleImage x:Name="AvatarImage" HorizontalOptions="End"  Source="NoProfileImage.png" BorderThickness="0" WidthRequest="35" HeightRequest="35"/>
+                </StackLayout>
+            </Frame>
+
+            <pullToRefresh:PullToRefreshLayout IsPullToRefreshEnabled="True" x:Name="PullToRefreshLayoutView"  >
+
+                <Grid  Padding="0" ColumnSpacing="0" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!---Top Column Content -->
+                    <StackLayout  x:Name="TopColumn" Grid.Row="0"  Grid.Column="0"></StackLayout>
+
+                </Grid>
+
+            </pullToRefresh:PullToRefreshLayout>
+        </StackLayout>
+
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local1="clr-namespace:PlayTube.Controls;assembly=PlayTube"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             xmlns:customRenders="clr-namespace:PlayTube.CustomRenders;assembly=PlayTube"
+             x:Class="PlayTube.Pages.Tabbes.Hamburg_Page" Appearing="Hamburg_Page_OnAppearing">
+
+    <ScrollView>
+        <StackLayout x:Name="MainStackPanel" Orientation="Vertical"  VerticalOptions="FillAndExpand" BackgroundColor="#F6F6F6" Padding="5,0,5,0" >
+            <!--TOP HEADER LOGO BAR-->
+            <Frame x:Name="TopHeaderBAR" HeightRequest="44" Padding="3" MinimumHeightRequest="17" HasShadow="True" Margin="-5,0,-5,0">
+                <StackLayout Orientation="Horizontal" Padding="8" >
+                    <Image x:Name="ImageLogo" Source="logo.png" HeightRequest="18" Margin="2,0,0,0" HorizontalOptions="StartAndExpand" Aspect="Fill" ></Image>
+                    <Label x:Name="SearchIcon"  VerticalOptions="Center"  HorizontalOptions="End"  Style="{StaticResource IoniconsFontIcon}" TextColor="#444" FontSize="20" Text="{ x:Static local1:IoniciconsFont.Search}" Margin="10,0,9,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Search_OnClicked" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <shared:CircleImage x:Name="AvatarImage" HorizontalOptions="End" Source="NoProfileImage.png" BorderThickness="0" WidthRequest="35" HeightRequest="35"/>
+                </StackLayout>
+            </Frame>
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <!--<RowDefinition Height="50" />-->
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <ListView x:Name="PagesListView" ItemsSource="ListItemsCollection"  Grid.Row="0" Grid.Column="0" Margin="0,-3,0,0"    HasUnevenRows="True" ItemSelected="PagesListView_OnItemSelected" 
+                          ItemTapped="PagesListView_OnItemTapped" SeparatorVisibility="None"  BackgroundColor="White">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell Height="50">
+                                <Grid  ColumnSpacing="1"  RowSpacing="0"  Margin="1,1,1,1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--<! — BACKGROUND COLOR —>-->
+
+                                    <!--<! — BACKGROUND CIRCLE —>-->
+                                    <!--
+                                    <Label Grid.Row="0" Grid.Column="0" FontSize="50" TextColor="{Binding BackgroundColor}" Style="{ StaticResource FlameShapesFontIcon }"
+                                           Text="{ x:Static local1:PlayTubeShapesFont.Circle }" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>-->
+
+                                    <!--<! — ICON —>-->
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding Icon_page}" FontSize="23" TextColor="{Binding BackgroundColor}"
+                                           Style="{StaticResource IoniconsFontIcon}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+
+
+                                    <Label Grid.Row="0" Grid.Column="1"  Text="{Binding Name_page}" TextColor="{Binding TextColor}" VerticalTextAlignment="Center"/>
+
+
+                                    <!--<Label Grid.Row="0" Grid.Column="1" WidthRequest="20" VerticalOptions="Center" HorizontalOptions="End" Style="{StaticResource IoniconsFontIcon}" 
+                                           TextColor="{ Binding BackgroundColor }" Text="{ x:Static local1:IoniciconsFont.ChevronRight}" Margin="15,0,2,0"/>-->
+
+                                </Grid>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <ListView x:Name="SeconderyListView" ItemsSource="ListItemsCollection"  Grid.Row="1" Grid.Column="0" Margin="0,-2,0,0" HasUnevenRows="True" HeightRequest="130"
+                          SeparatorVisibility="None" BackgroundColor="White" ItemSelected="SeconderyListView_OnItemSelected" ItemTapped="SeconderyListView_OnItemTapped" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell Height="60">
+
+                                <Grid ColumnSpacing="1"  RowSpacing="0"  Margin="1,1,1,1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--<! — BACKGROUND COLOR —>-->
+                                    <!--<BoxView  Grid.Row="0" Grid.RowSpan="2"  Grid.Column="0"  BackgroundColor="{Binding BackgroundColor}"/>-->
+
+                                    <!--<! — BACKGROUND CIRCLE —>-->
+                                    <!--<Label Grid.Row="0" Grid.Column="0" FontSize="50" TextColor="#777" Style="{ StaticResource FlameShapesFontIcon }" Text="{ x:Static local1:PlayTubeShapesFont.Circle }"
+                                           VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>-->
+
+                                    <!--<! — ICON —>-->
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding Icon_page}" FontSize="23" TextColor="{Binding BackgroundColor}"
+                                           Style="{StaticResource IoniconsFontIcon}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+
+
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name_page}" TextColor="{Binding TextColor}" VerticalTextAlignment="Center"/>
+
+
+                                    <!--<Label Grid.Row="0" Grid.Column="1" WidthRequest="20" VerticalOptions="Center" HorizontalOptions="End"
+                                           Style="{StaticResource IoniconsFontIcon}" TextColor="{ Binding BackgroundColor }" Text="{ x:Static local1:IoniciconsFont.ChevronRight}"
+                                           Margin="15,0,2,0"/>-->
+
+                                </Grid>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                
+
+            </Grid>
+            <customRenders:AdMobView  HeightRequest="50" x:Name="AdmobBanner" IsVisible="False" VerticalOptions="EndAndExpand" BackgroundColor="White" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
